@@ -3,6 +3,7 @@ module.exports = {
     findById,
     findSteps,
     add,
+    addStep,
     update,
     remove
 }
@@ -28,6 +29,10 @@ function add(newPost) {
             const id = ids[0];
             return findById(id);
         })
+}
+
+function addStep(steps, id) {
+    return db("steps").insert(steps, "id").where("scheme_id", id);
 }
 
 function update(id, changes) {
